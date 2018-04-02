@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{10D0E30C-0561-4D47-842A-1EEC5F364E13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cassandra", "src\Cassandra\Cassandra.csproj", "{DA646B0A-2C73-4099-881B-7BDFADD1B3A2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2821CE40-4D0D-4F2D-9610-26C8CA22DBE1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{C7A94464-9633-43B4-9EA0-30BE5AA24832}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\0001 - Add Cache Table.cql = deploy\0001 - Add Cache Table.cql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{87BCA40B-46FA-4737-A8D0-CAB4CCDFBA68}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CassandraCacheSample", "samples\CassandraCacheSample\CassandraCacheSample.csproj", "{35532F53-17D0-4460-AFEF-EB2EC8F82ED7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cassandra.Tests", "tests\Cassandra.Tests\Cassandra.Tests.csproj", "{76DAAA7B-7F7D-4B2C-8C94-CD83FDDC3A50}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA646B0A-2C73-4099-881B-7BDFADD1B3A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA646B0A-2C73-4099-881B-7BDFADD1B3A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA646B0A-2C73-4099-881B-7BDFADD1B3A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA646B0A-2C73-4099-881B-7BDFADD1B3A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35532F53-17D0-4460-AFEF-EB2EC8F82ED7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35532F53-17D0-4460-AFEF-EB2EC8F82ED7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35532F53-17D0-4460-AFEF-EB2EC8F82ED7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35532F53-17D0-4460-AFEF-EB2EC8F82ED7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76DAAA7B-7F7D-4B2C-8C94-CD83FDDC3A50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76DAAA7B-7F7D-4B2C-8C94-CD83FDDC3A50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76DAAA7B-7F7D-4B2C-8C94-CD83FDDC3A50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76DAAA7B-7F7D-4B2C-8C94-CD83FDDC3A50}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DA646B0A-2C73-4099-881B-7BDFADD1B3A2} = {10D0E30C-0561-4D47-842A-1EEC5F364E13}
+		{35532F53-17D0-4460-AFEF-EB2EC8F82ED7} = {87BCA40B-46FA-4737-A8D0-CAB4CCDFBA68}
+		{76DAAA7B-7F7D-4B2C-8C94-CD83FDDC3A50} = {2821CE40-4D0D-4F2D-9610-26C8CA22DBE1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {87F341E9-2C05-4DBD-805C-C9608376C165}
+	EndGlobalSection
+EndGlobal
