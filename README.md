@@ -1,2 +1,2 @@
-# caching-cassandra
+# Caching - Cassandra Extension
 IDistributedCache implementation for Cassandra
