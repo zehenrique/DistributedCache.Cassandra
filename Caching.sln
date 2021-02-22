@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2015
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{10D0E30C-0561-4D47-842A-1EEC5F364E13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cassandra", "src\Cassandra\Cassandra.csproj", "{DA646B0A-2C73-4099-881B-7BDFADD1B3A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cassandra", "src\Cassandra\Cassandra.csproj", "{DA646B0A-2C73-4099-881B-7BDFADD1B3A2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2821CE40-4D0D-4F2D-9610-26C8CA22DBE1}"
 EndProject
@@ -18,7 +18,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{87BC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CassandraCacheSample", "samples\CassandraCacheSample\CassandraCacheSample.csproj", "{35532F53-17D0-4460-AFEF-EB2EC8F82ED7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cassandra.Tests", "tests\Cassandra.Tests\Cassandra.Tests.csproj", "{76DAAA7B-7F7D-4B2C-8C94-CD83FDDC3A50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cassandra.Tests", "tests\Cassandra.Tests\Cassandra.Tests.csproj", "{76DAAA7B-7F7D-4B2C-8C94-CD83FDDC3A50}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{400D8656-5F31-422F-9C8D-50000AB199C6}"
+	ProjectSection(SolutionItems) = preProject
+		db.cql = db.cql
+		LICENSE = LICENSE
+		README.md = README.md
+		setup-local-cassandra.sh = setup-local-cassandra.sh
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

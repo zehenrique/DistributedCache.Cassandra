@@ -15,19 +15,19 @@
         private readonly ConcurrentDictionary<DbOperations, PreparedStatement> preparedStatements = new ConcurrentDictionary<DbOperations, PreparedStatement>();
         private readonly CassandraCacheOptions cacheOptions;
 
-        public CassandraCache(IOptions<CassandraCacheOptions> optionsAccessor)
+        public CassandraCache(IOptions<CassandraCacheOptions> options)
         {
-            if (optionsAccessor == null)
+            if (options == null)
             {
-                throw new ArgumentNullException(nameof(optionsAccessor));
+                throw new ArgumentNullException(nameof(options));
             }
 
-            if (optionsAccessor.Value.Session == null)
+            if (options.Value.Session == null)
             {
-                throw new ArgumentNullException(nameof(optionsAccessor.Value.Session).ToString());
+                throw new ArgumentNullException(nameof(options.Value.Session).ToString());
             }
 
-            this.cacheOptions = optionsAccessor.Value;
+            this.cacheOptions = options.Value;
 
             this.InitializePreparedStatements();
         }

@@ -7,6 +7,7 @@
     using Microsoft.Extensions.Caching.Distributed;
     using Caching.Cassandra;
 
+    // Run setup-local-cassandra.sh before running this sample
     public class Program
     {
         public static void Main(string[] args)
@@ -26,7 +27,7 @@
                 .AddContactPoint("localhost")
                 .WithCredentials("cassandra", "cassandra")
                 .WithPort(9042)
-                .WithDefaultKeyspace("cachecontroltest")
+                .WithDefaultKeyspace("cassandracache")
                 .Build()
                 .Connect();
 
@@ -42,11 +43,11 @@
 
             Console.WriteLine("Cassandra Cache initialized");
 
-            Console.WriteLine($"Setting value '{message}' in cache");
+            Console.WriteLine($"\nSetting value '{message}' in cache");
             await cache.SetAsync(key, value, new DistributedCacheEntryOptions());
             Console.WriteLine("Value set");
 
-            Console.WriteLine("Getting value from cache");
+            Console.WriteLine("\nGetting value from cache");
             var result = await cache.GetAsync(key);
 
             if (result != null)
@@ -58,11 +59,11 @@
                 Console.WriteLine("Value not found");
             }
 
-            Console.WriteLine("Removing value from cache");
+            Console.WriteLine("\nRemoving value from cache");
             await cache.RemoveAsync(key);
             Console.WriteLine("Value removed");
 
-            Console.WriteLine("Getting value from cache again");
+            Console.WriteLine("\nGetting value from cache again");
             result = await cache.GetAsync(key);
 
             if (result != null)
@@ -73,8 +74,6 @@
             {
                 Console.WriteLine("Value not found");
             }
-
-            Console.ReadLine();
         }
     }
 }

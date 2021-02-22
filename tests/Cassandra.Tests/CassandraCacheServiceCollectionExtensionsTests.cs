@@ -9,7 +9,7 @@
     using Moq;
 
     [TestClass]
-    public class CacheServiceExtensionsTests
+    public class CassandraCacheServiceCollectionExtensionsTests
     {
         [TestMethod]
         public void CassandraCacheServiceCollectionExtensions_AddDistributedCassandraCache_RegisterDistributedCacheAsSingleton()

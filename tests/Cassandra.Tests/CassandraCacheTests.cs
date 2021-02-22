@@ -9,6 +9,7 @@ namespace Cassandra.Tests
     using Microsoft.Extensions.Options;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    // Run setup-local-cassandra.sh before running these tests
     [TestClass]
     public class CassandraCacheTests
     {
@@ -16,7 +17,6 @@ namespace Cassandra.Tests
 
         public CassandraCacheTests()
         {
-            // TODO refactor
             var cassandraCacheOptions = new CassandraCacheOptions
             {
                 Session =
@@ -24,7 +24,7 @@ namespace Cassandra.Tests
                     .AddContactPoint("localhost")
                     .WithCredentials("cassandra", "cassandra")
                     .WithPort(9042)
-                    .WithDefaultKeyspace("cachecontroltest")
+                    .WithDefaultKeyspace("cassandracache")
                     .Build()
                     .Connect(),
                 ReadConsistencyLevel = ConsistencyLevel.LocalOne,

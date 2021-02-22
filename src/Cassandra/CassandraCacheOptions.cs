@@ -10,9 +10,9 @@
 
         public ILogger Logger { get; set; }
 
-        public ConsistencyLevel ReadConsistencyLevel { get; set; }
+        public ConsistencyLevel ReadConsistencyLevel { get; set; } = ConsistencyLevel.LocalQuorum;
 
-        public ConsistencyLevel WriteConsistencyLevel { get; set; }
+        public ConsistencyLevel WriteConsistencyLevel { get; set; } = ConsistencyLevel.LocalQuorum;
 
         CassandraCacheOptions IOptions<CassandraCacheOptions>.Value => this;
     }

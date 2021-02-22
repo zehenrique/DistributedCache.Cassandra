@@ -6,21 +6,21 @@
 
     public static class CassandraCacheServiceCollectionExtensions
     {
-        public static IServiceCollection AddDistributedCassandraCache(this IServiceCollection services, Action<CassandraCacheOptions> setupAction)
+        public static IServiceCollection AddDistributedCassandraCache(this IServiceCollection services, Action<CassandraCacheOptions> options)
         {
             if (services == null)
             {
                 throw new ArgumentNullException(nameof(services));
             }
 
-            if (setupAction == null)
+            if (options == null)
             {
-                throw new ArgumentNullException(nameof(setupAction));
+                throw new ArgumentNullException(nameof(options));
 
             }
 
             services.AddOptions();
-            services.Configure(setupAction);
+            services.Configure(options);
             services.Add(ServiceDescriptor.Singleton<IDistributedCache, CassandraCache>());
 
             return services;
