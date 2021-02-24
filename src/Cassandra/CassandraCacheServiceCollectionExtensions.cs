@@ -1,4 +1,4 @@
-﻿namespace Caching.Cassandra
+﻿namespace DistributedCache.Cassandra
 {
     using System;
     using Microsoft.Extensions.Caching.Distributed;

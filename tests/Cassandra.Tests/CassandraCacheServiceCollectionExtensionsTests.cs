@@ -1,7 +1,6 @@
-﻿namespace Cassandra.Tests
+﻿namespace DistributedCache.Cassandra.Tests
 {
     using System.Linq;
-    using Caching.Cassandra;
     using global::Cassandra;
     using Microsoft.Extensions.Caching.Distributed;
     using Microsoft.Extensions.DependencyInjection;
@@ -9,6 +8,7 @@
     using Moq;
 
     [TestClass]
+    [TestCategory("UnitTests")]
     public class CassandraCacheServiceCollectionExtensionsTests
     {
         [TestMethod]

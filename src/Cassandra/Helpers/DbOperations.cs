@@ -1,4 +1,4 @@
-﻿namespace Caching.Cassandra.Helpers
+﻿namespace DistributedCache.Cassandra.Helpers
 {
     internal enum DbOperations
     {

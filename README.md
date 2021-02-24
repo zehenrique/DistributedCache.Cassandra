@@ -1,4 +1,4 @@
-# Caching - Cassandra Extension
+# Distributed Cache - Cassandra Extension
 .Net Core [IDistributedCache](https://docs.microsoft.com/en-us/aspnet/core/performance/caching/distributed?view=aspnetcore-5.0) implementation for [Cassandra](https://cassandra.apache.org/).
 
 ## Configure

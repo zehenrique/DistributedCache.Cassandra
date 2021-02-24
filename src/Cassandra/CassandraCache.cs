@@ -1,10 +1,10 @@
-﻿namespace Caching.Cassandra
+﻿namespace DistributedCache.Cassandra
 {
     using System;
     using System.Collections.Concurrent;
     using System.Threading;
     using System.Threading.Tasks;
-    using Caching.Cassandra.Helpers;
+    using DistributedCache.Cassandra.Helpers;
     using global::Cassandra;
     using Microsoft.Extensions.Caching.Distributed;
     using Microsoft.Extensions.Logging;

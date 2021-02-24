@@ -1,9 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <AssemblyName>DistributedCache.Cassandra.Tests</AssemblyName>
+
+    <RootNamespace>DistributedCache.Cassandra.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

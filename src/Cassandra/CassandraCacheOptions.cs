@@ -1,4 +1,4 @@
-﻿namespace Caching.Cassandra
+﻿namespace DistributedCache.Cassandra
 {
     using global::Cassandra;
     using Microsoft.Extensions.Logging;

@@ -1,9 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Caching.Cassandra</AssemblyName>
-    <RootNamespace>Caching.Cassandra</RootNamespace>
+    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <AssemblyName>DistributedCache.Cassandra</AssemblyName>
+    <RootNamespace>DistributedCache.Cassandra</RootNamespace>
+    <PackageProjectUrl>https://github.com/zehenrique/DistributedCache.Cassandra</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/zehenrique/DistributedCache.Cassandra</RepositoryUrl>
+    <PackageTags>Cassandra, IDistributedCache, Distributed, Cache</PackageTags>
+    <Authors>José Magalhães</Authors>
+    <Description>IDistributedCache implementation for Cassandra</Description>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,6 +20,13 @@
 
   <ItemGroup>
     <Folder Include="Helpers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

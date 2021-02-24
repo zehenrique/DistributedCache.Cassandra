@@ -4,8 +4,8 @@
     using System.Text;
     using System.Threading.Tasks;
     using Cassandra;
+    using DistributedCache.Cassandra;
     using Microsoft.Extensions.Caching.Distributed;
-    using Caching.Cassandra;
 
     // Run setup-local-cassandra.sh before running this sample
     public class Program

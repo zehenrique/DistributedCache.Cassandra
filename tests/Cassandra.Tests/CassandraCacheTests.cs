@@ -1,9 +1,8 @@
-namespace Cassandra.Tests
+namespace DistributedCache.Cassandra.Tests
 {
     using System;
     using System.Text;
     using System.Threading.Tasks;
-    using Caching.Cassandra;
     using global::Cassandra;
     using Microsoft.Extensions.Caching.Distributed;
     using Microsoft.Extensions.Options;
@@ -11,6 +10,7 @@ namespace Cassandra.Tests
 
     // Run setup-local-cassandra.sh before running these tests
     [TestClass]
+    [TestCategory("IntegrationTests")]
     public class CassandraCacheTests
     {
         private readonly CassandraCache cassandraCache;
