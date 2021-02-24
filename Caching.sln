@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2821CE40
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{C7A94464-9633-43B4-9EA0-30BE5AA24832}"
 	ProjectSection(SolutionItems) = preProject
-		deploy\0001 - Add Cache Table.cql = deploy\0001 - Add Cache Table.cql
+		deploy\AddCacheTable.cql = deploy\AddCacheTable.cql
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{87BCA40B-46FA-4737-A8D0-CAB4CCDFBA68}"

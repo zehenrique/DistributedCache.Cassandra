@@ -1,12 +1,13 @@
 # Caching - Cassandra Extension
-.Net Core [IDistributedCache](https://docs.microsoft.com/en-us/aspnet/core/performance/caching/distributed?view=aspnetcore-5.0) implementation for Cassandra.
+.Net Core [IDistributedCache](https://docs.microsoft.com/en-us/aspnet/core/performance/caching/distributed?view=aspnetcore-5.0) implementation for [Cassandra](https://cassandra.apache.org/).
 
 ## Configure
 
-1. Configure your application to make use of [Cassandra](https://cassandra.apache.org/).
+1. Create the table *cassandra_cache* in your Cassandra Keyspace. You can find the cql file inside the *deploy* folder.
 
-2. Add the following code to `Startup.ConfigureServices` and perform the necessary changes:
+2. Configure your application to make use of Cassandra.
 
+3. Add the following code to `Startup.ConfigureServices` and perform the necessary changes:
 ```csharp
 services.AddDistributedCassandraCache(options =>
 {
@@ -15,8 +16,7 @@ services.AddDistributedCassandraCache(options =>
     options.ReadConsistencyLevel = ConsistencyLevel.LocalQuorum;
     options.WriteConsistencyLevel = ConsistencyLevel.LocalQuorum;
 })
-
 ```
 
-3. To use the IDistributedCache interface, request an instance of IDistributedCache from any constructor in the app. The instance is provided by dependency injection (DI).
+4. To use the IDistributedCache interface, request an instance of IDistributedCache from any constructor in the app. The instance is provided by dependency injection (DI).
 
