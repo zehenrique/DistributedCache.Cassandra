@@ -11,15 +11,24 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    services:
+      cassandra:
+        image: cassandra
+
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.x
+    - name: Setup Local Cassandra
+      run: sh setup-local-cassandra.sh
+      shell: bash
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
-    - name: Test
+    - name: UnitTests
       run: dotnet test --configuration Release --no-build --verbosity normal --filter TestCategory=UnitTests
+    - name: IntegrationTests
+      run: dotnet test --configuration Release --no-build --verbosity normal --filter TestCategory=IntegrationTests
