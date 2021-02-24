@@ -37,4 +37,4 @@ jobs:
     - name: Pack
       run: dotnet pack src/Cassandra/Cassandra.csproj --configuration Release --no-restore
     - name: Publish
-      run: dotnet nuget push src/Cassandra/bin/Release/*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://nuget.pkg.github.com/zehenrique/index.json
+      run: dotnet nuget push src/Cassandra/bin/Release/*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
