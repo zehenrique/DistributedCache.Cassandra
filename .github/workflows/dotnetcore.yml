@@ -21,7 +21,6 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.x
-        source-url: https://nuget.pkg.github.com/zehenrique/index.json
       env:
         NUGET_AUTH_TOKEN: ${{secrets.NUGET_API_KEY}}
     - name: Setup Local Cassandra
@@ -38,4 +37,4 @@ jobs:
     - name: Pack
       run: dotnet pack src/Cassandra/Cassandra.csproj --configuration Release --no-restore
     - name: Publish
-      run: dotnet nuget push src/Cassandra/bin/Release/*.nupkg
+      run: dotnet nuget push src/Cassandra/bin/Release/*.nupkg -src https://nuget.pkg.github.com/zehenrique/index.json
