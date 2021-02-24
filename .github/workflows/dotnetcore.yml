@@ -36,6 +36,6 @@ jobs:
     - name: IntegrationTests
       run: dotnet test --configuration Release --no-build --verbosity normal --filter TestCategory=IntegrationTests
     - name: Pack
-      run: dotnet pack src/Cassandra/Cassandra.csproj --configuration Release --no-restore --output packages
+      run: dotnet pack src/Cassandra/Cassandra.csproj --configuration Release --no-restore
     - name: Publish
-      run: dotnet nuget push packages/*.nupkg
+      run: dotnet nuget push src/Cassandra/bin/Release/*.nupkg
