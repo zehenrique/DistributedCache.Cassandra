@@ -20,3 +20,6 @@ services.AddDistributedCassandraCache(options =>
 
 4. To use the IDistributedCache interface, request an instance of IDistributedCache from any constructor in the app. The instance is provided by dependency injection (DI).
 
+
+## Package
+NuGet: https://www.nuget.org/packages/DistributedCache.Cassandra/

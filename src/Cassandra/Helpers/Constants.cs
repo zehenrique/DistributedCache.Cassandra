@@ -9,6 +9,9 @@
 
     internal static class DefaultValues
     {
+        /// <summary>
+        /// The default time-to-live value (in seconds).
+        /// </summary>
         public const int DefaultTtl = 3600;
     }
 }

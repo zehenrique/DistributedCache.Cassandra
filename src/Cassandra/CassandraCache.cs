@@ -34,122 +34,104 @@
 
         public byte[] Get(string key)
         {
-            if (key == null)
-            {
-                throw new ArgumentNullException(nameof(key));
-            }
-
-            var boundStatement = this.preparedStatements[DbOperations.Select].Bind(key).SetConsistencyLevel(this.cacheOptions.ReadConsistencyLevel);
-
-            var rowSet = this.cacheOptions.Session.Execute(boundStatement);
+            var rowSet = this.cacheOptions.Session.Execute(this.CreateGetBoundStatement(key));
 
             return CassandraCacheHelper.GetReturnValue(rowSet);
         }
 
-        public async Task<byte[]> GetAsync(string key, CancellationToken token = default(CancellationToken))
+        public async Task<byte[]> GetAsync(string key, CancellationToken token = default)
         {
-            if (key == null)
-            {
-                throw new ArgumentNullException(nameof(key));
-            }
-
             token.ThrowIfCancellationRequested();
 
-            var boundStatement = this.preparedStatements[DbOperations.Select].Bind(key).SetConsistencyLevel(this.cacheOptions.ReadConsistencyLevel);
-
-            var rowSet = await this.cacheOptions.Session.ExecuteAsync(boundStatement);
+            var rowSet = await this.cacheOptions.Session.ExecuteAsync(this.CreateGetBoundStatement(key));
 
             return CassandraCacheHelper.GetReturnValue(rowSet);
         }
 
         public void Set(string key, byte[] value, DistributedCacheEntryOptions options)
         {
-            if (key == null)
-            {
-                throw new ArgumentNullException(nameof(key));
-            }
-
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
-            if (options == null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
-            var creationTime = DateTimeOffset.UtcNow;
-            var expiryDate = CassandraCacheHelper.GetAbsoluteExpiration(creationTime, options);
-            var ttl = CassandraCacheHelper.GetExpirationInSeconds(creationTime, expiryDate);
-
-            var boundStatement = this.preparedStatements[DbOperations.Insert].Bind(key, expiryDate, value, ttl).SetConsistencyLevel(this.cacheOptions.WriteConsistencyLevel);
-
-            this.cacheOptions.Session.Execute(boundStatement);
+            this.cacheOptions.Session.Execute(this.CreateSetBoundStatement(key, value, options));
         }
 
-        public async Task SetAsync(string key, byte[] value, DistributedCacheEntryOptions options, CancellationToken token = default(CancellationToken))
+        public async Task SetAsync(string key, byte[] value, DistributedCacheEntryOptions options, CancellationToken token = default)
         {
-            if (key == null)
-            {
-                throw new ArgumentNullException(nameof(key));
-            }
-
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
-            if (options == null)
-            {
-                throw new ArgumentNullException(nameof(options));
-            }
-
             token.ThrowIfCancellationRequested();
 
-            var creationTime = DateTimeOffset.UtcNow;
-            var expiryDate = CassandraCacheHelper.GetAbsoluteExpiration(creationTime, options);
-            var ttl = CassandraCacheHelper.GetExpirationInSeconds(creationTime, expiryDate);
-
-            var boundStatement = this.preparedStatements[DbOperations.Insert].Bind(key, expiryDate, value, ttl).SetConsistencyLevel(this.cacheOptions.WriteConsistencyLevel);
-
-            await this.cacheOptions.Session.ExecuteAsync(boundStatement);
+            await this.cacheOptions.Session.ExecuteAsync(this.CreateSetBoundStatement(key, value, options));
         }
 
         public void Remove(string key)
         {
-            if (key == null)
-            {
-                throw new ArgumentNullException(nameof(key));
-            }
-
-            var boundStatement = this.preparedStatements[DbOperations.Delete].Bind(key).SetConsistencyLevel(this.cacheOptions.WriteConsistencyLevel);
-
-            this.cacheOptions.Session.Execute(boundStatement);
+            this.cacheOptions.Session.Execute(this.CreateRemoveBoundStatement(key));
         }
 
-        public async Task RemoveAsync(string key, CancellationToken token = default(CancellationToken))
+        public async Task RemoveAsync(string key, CancellationToken token = default)
         {
-            if (key == null)
-            {
-                throw new ArgumentNullException(nameof(key));
-            }
-
             token.ThrowIfCancellationRequested();
 
-            var boundStatement = this.preparedStatements[DbOperations.Delete].Bind(key).SetConsistencyLevel(this.cacheOptions.WriteConsistencyLevel);
-
-            await this.cacheOptions.Session.ExecuteAsync(boundStatement);
+            await this.cacheOptions.Session.ExecuteAsync(this.CreateRemoveBoundStatement(key));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="key"></param>
         public void Refresh(string key)
         {
-            throw new NotImplementedException();
+            // Sliding Expiration not implemented
         }
 
         public Task RefreshAsync(string key, CancellationToken token = default(CancellationToken))
         {
-            throw new NotImplementedException();
+            // Sliding Expiration not implemented
+            return Task.CompletedTask;
+        }
+
+        private IStatement CreateGetBoundStatement(string key)
+        {
+            if (key == null)
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
+
+            var boundStatement = this.preparedStatements[DbOperations.Select].Bind(key).SetConsistencyLevel(this.cacheOptions.ReadConsistencyLevel);
+            return boundStatement;
+        }
+
+        private IStatement CreateSetBoundStatement(string key, byte[] value, DistributedCacheEntryOptions options)
+        {
+            if (key == null)
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
+
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            if (options == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            var creationTime = DateTimeOffset.UtcNow;
+            var expiryDate = CassandraCacheHelper.GetAbsoluteExpiration(creationTime, options);
+            var ttl = CassandraCacheHelper.GetExpirationInSeconds(creationTime, expiryDate);
+
+            var boundStatement = this.preparedStatements[DbOperations.Insert].Bind(key, expiryDate, value, ttl).SetConsistencyLevel(this.cacheOptions.WriteConsistencyLevel);
+            return boundStatement;
+        }
+
+        private IStatement CreateRemoveBoundStatement(string key)
+        {
+            if (key == null)
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
+
+            var boundStatement = this.preparedStatements[DbOperations.Delete].Bind(key).SetConsistencyLevel(this.cacheOptions.WriteConsistencyLevel);
+            return boundStatement;
         }
 
         private void InitializePreparedStatements()
